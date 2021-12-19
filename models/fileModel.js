@@ -6,3 +6,5 @@ const fileSchema = mongoose.Schema({
         required:true
     }
 })
+
+module.exports = mongoose.model('file',fileSchema)

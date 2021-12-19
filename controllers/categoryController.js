@@ -1,15 +1,18 @@
-const CategoryModel = require('../models/categoryModel')
+const Category = require('../models/categoryModel')
 exports.getCategories =  async (req,res) => {
+   
     try {
-    const categories = await CategoryModel.find({})
+    
+    const categories = await Category.find()
+    console.log(categories)
     if(categories) {
         res.status(200).json({
             success:true,
-            countries:countries
+            categories:categories
         })
     }
     }
-    catch(e ) {
+    catch(e) {
         res.status(400).json({
             success:false,
             error:e
@@ -19,7 +22,7 @@ exports.getCategories =  async (req,res) => {
 
 exports.addCategory = async  (req,res) => {
  try {
-     const category = CategoryModel(req.body)
+     const category = Category(req.body)
      const data = await category.save()
      if(data) {
          res.status(201).json({
@@ -39,7 +42,7 @@ exports.addCategory = async  (req,res) => {
 
 exports.updateCategory  = async  (req,res) => {
     try {
-        const category = await CategoryModel.findByIdAndUpdate(req.params.id,{$set:req.body},{new:true})
+        const category = await Category.findByIdAndUpdate(req.params.id,{$set:req.body},{new:true})
         if(category) {
             res.status(200).json({
                 success:true,
@@ -57,7 +60,7 @@ exports.updateCategory  = async  (req,res) => {
 
    exports.deleteCategory  = async  (req,res) => {
     try {
-        const category = await CategoryModel.findByIdAndRemove(req.params.id)
+        const category = await Category.findByIdAndRemove(req.params.id)
         if(category) {
             res.status(200).json({
                 success:true

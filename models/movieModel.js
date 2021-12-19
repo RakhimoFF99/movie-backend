@@ -5,6 +5,7 @@ const movieSchema = new mongoose.Schema({
     name:{
         type:String,
         required:true,
+        unique:true,
         trim:true
     },
     categoryId:{
@@ -12,7 +13,8 @@ const movieSchema = new mongoose.Schema({
         ref:"Category"
     },
     description:{
-        type:String,required:true
+        type:String,
+        required:true
     },
     country:{
         type:String,
@@ -20,7 +22,8 @@ const movieSchema = new mongoose.Schema({
     },
     date:{
         type:Date,
-        required:true
+        default:Date.now,
+      
     },
     duration:{
         type:Number,
@@ -36,7 +39,7 @@ const movieSchema = new mongoose.Schema({
     },
     imagesPath:{
         type:Array,
-        required:true
+     
     }
 
 },{timestamps: true})

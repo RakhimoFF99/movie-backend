@@ -5,8 +5,7 @@ const categorySchema = new mongoose.Schema({
     category:{
         type:String,
         required:true,
-        unique:true,
-        dropDups: true
+      
     }
 }, {timestamps: true})
 
